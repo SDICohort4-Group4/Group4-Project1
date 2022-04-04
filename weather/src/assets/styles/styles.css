@@ -1,0 +1,25 @@
+* {
+    margin: 0px;
+    padding : 0px;
+}
+
+.navBar {
+    border: 1px solid black;
+}
+
+.link {
+    text-decoration: none;
+    padding: 0px 20px;
+    border-right: 1px solid black;
+}
+
+.mapArea {
+    /* width: 50%; */
+    border: 1px solid orange;
+    /* height: 200px; */
+}
+
+.leaflet-container {
+    width: 75vw;
+    height: 75vh;
+}
