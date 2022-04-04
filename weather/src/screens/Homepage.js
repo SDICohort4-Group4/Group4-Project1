@@ -31,23 +31,23 @@ class Home extends React.Component {
                     </div>
                     <div className="mapArea">
                         <Switch>
-                            <Route exact path='/'>
-                                <h2> This is the empty page</h2>
-                            </Route>
                             <Route className='leaflet-container' path='/2hrs'>
                                 <TwoHoursNowcast />
                             </Route>
-                            <Route path='/24hrs'>
+                            <Route className='leaflet-container' path='/24hrs'>
                                 <TwentyfourHoursForecast />
                             </Route>
                             <Route path='/4days'>
                                 <FourDaysForecast />
                             </Route>
-                            <Route path='/PSI'>
+                            <Route className='leaflet-container' path='/PSI'>
                                 <PSI />
                             </Route>
                             <Route path='/UV'>
                                 <UV />
+                            </Route>
+                            <Route exact path='/'>
+                                <h2> This is the empty page</h2>
                             </Route>
                         </Switch>
                     </div>
