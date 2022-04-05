@@ -19,9 +19,9 @@ function Home(){
                 <Router basename = '/Group4-Project1'>
                     <div className='navBar'>
                         <div>
-                            <NavLink className='link' to ='/2hrs'>2 Hours Nowcast</NavLink>
-                            <NavLink className='link'to ='/24hrs'>24 Hours Forecast</NavLink>
-                            <NavLink className='link'to ='/4days'>4 Days Forecast</NavLink>
+                            <NavLink className='link' to ='/2hrs'>2 Hrs</NavLink>
+                            <NavLink className='link'to ='/24hrs'>24 Hrs</NavLink>
+                            <NavLink className='link'to ='/4days'>4 Days</NavLink>
                             <NavLink className='link'to ='/PSI'>PSI</NavLink>
                             <NavLink className='link'to ='/UV'>UV</NavLink>
                             <Link to='/'></Link>

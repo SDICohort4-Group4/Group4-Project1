@@ -21,7 +21,10 @@ function App() {
     //   </header>
     // </div>
     <>
-      <Homepage />
+      <div className="App">
+        <h1>Singapore Weather Forecast</h1>
+        <Homepage />
+      </div>
     </>
   );
 }

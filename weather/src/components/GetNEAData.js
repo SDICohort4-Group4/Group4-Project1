@@ -35,7 +35,7 @@ function GetNEAData(props) {
       params: {
         date: [nowTime],
       }
-  })
+    })
   
     if (response.status===200){
       let data={...response.data.items[0]};
