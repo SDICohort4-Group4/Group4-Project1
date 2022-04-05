@@ -10,12 +10,10 @@ import {
 import '../assets/styles/styles.css'
 import {TwoHoursNowcast, TwentyfourHoursForecast, FourDaysForecast, PSI, UV} from '../routes/routes';
 
-class Home extends React.Component {
-    constructor(){
-        super();
-    }
+function Home(){
+    
 
-    render(){
+    
         return(
             <>
                 <Router basename = '/Group4-Project1'>
@@ -54,7 +52,7 @@ class Home extends React.Component {
                 </Router>
             </>
         )
-    }
+    
 }
 
 export default Home;
