@@ -1,21 +1,21 @@
 import { useParams } from 'react-router-dom'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css'
+import CreateMarkers from './marker.js'
 
 export function TwoHoursNowcast (){
     return(
         <>
             <h2>This is the 2 hours forecast</h2>
-            <MapContainer center={[1.3521, 103.8198]} zoom={12}>
+            <MapContainer center={[1.3521, 103.8198]} zoom={11} maxZoom={11} minZoom={11}
+            maxBounds={[[1.3521, 103.5198], [1.3521, 104.1198]]} maxBoundsViscosity={1}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
                 />
-                <Marker position={[1.3521, 103.8198]}>
-                    <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                    </Popup>
-                </Marker>
+                <CreateMarkers obj={[{coordinate: [1.3521, 103.8198], location: "Central"},
+            {coordinate: [1.3521, 103.7198], location: "West"}]}/>
             </MapContainer>
         </>
     )
