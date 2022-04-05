@@ -14,7 +14,8 @@ export function TwoHoursNowcast (){
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
                 />
-                <CreateMarkers obj={[{coordinate: [1.3521, 103.8198], location: "Central"}]}/>
+                <CreateMarkers obj={[{coordinate: [1.3521, 103.8198], location: "Central"},
+            {coordinate: [1.3521, 103.7198], location: "West"}]}/>
             </MapContainer>
         </>
     )

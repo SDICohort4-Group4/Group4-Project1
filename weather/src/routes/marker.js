@@ -8,13 +8,27 @@ const iconWeather= (iconSize) => new L.Icon({
 });
 
 function CreateMarkers(props) {
+    
+    function markers() {
+        return(
+            props.obj.map((ele, i) => {
+                return(
+                <Marker position={ele.coordinate} icon={iconWeather(40)}>
+                    <Popup>
+                    {ele.location}
+                    </Popup>
+                </Marker>
+                )
+            })
+
+        )
+    }
 
     return (
-    <Marker position={props.obj[0].coordinate} icon={iconWeather(40)}>
-        <Popup>
-        {props.obj[0].location}
-        </Popup>
-    </Marker>
+        <>
+            {markers()}
+        </>
+
     )
 }
 
