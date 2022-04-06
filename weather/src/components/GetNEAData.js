@@ -38,9 +38,8 @@ function GetNEAData(props) {
     })
   
     if (response.status===200){
-      let data={...response.data.items[0]};
-      props.getData(data);
- 
+     props.getData({...response.data.items[0]});
+    
     }
   }
 }
@@ -49,13 +48,13 @@ export default GetNEAData;
 
 //Reference
 
-  //Pass in dataType="xxx" 
-  //Sample code:  
-  
-  //function getData(data) {
-  //  setData(data);
-  //}
-  //<GetNEAData dataType="2hour" getData={getData}/> 
+  // Pass in dataType="xxx" 
+  // Sample code:  
+  // function getData(data) {
+  //  setData(data); }
+
+  // in parent component use:
+  // <GetNEAData dataType="2hour" getData={getData}/> 
 
   // PSI dataType="psi"
       // data.readings
@@ -63,7 +62,9 @@ export default GetNEAData;
       // data.readings.pm25_twenty_four_hourly.national
 
   // UV index dataType="uvindex"
-      // data.value
+      // data.index[x].value 
+      // there is a value for every hour
+      // for latest value use x=0
 
   // 2 hour weather dataType="2hour"
       // data.forecasts[x]

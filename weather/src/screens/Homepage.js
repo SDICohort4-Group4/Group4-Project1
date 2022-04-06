@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {useState} from "react";
 import {
     BrowserRouter as Router,
     Switch,
@@ -8,9 +9,40 @@ import {
     NavLink,
 } from 'react-router-dom';
 import '../assets/styles/styles.css'
-import {TwoHoursNowcast, TwentyfourHoursForecast, FourDaysForecast, PSI, UV} from '../routes/routes';
+import {TwoHoursNowcast, TwentyfourHoursForecast, PSI} from '../routes/routes';
+import GetNEAData from '../components/GetNEAData';
+import UVDisplay from "../routes/UVDisplay";
+import FourDaysForecast from "../routes/FourDaysForecast"
 
 function Home() {
+
+    const [psiData, setPsiData]=useState({});
+    const [uvData, setUVData]=useState({});
+    const [twohourData, settwohourData]=useState({});
+    const [twentyfourhourData, settwentyfourhourData]=useState({});
+    const [fourdayData, setfourdayData]=useState({});
+ 
+    function getPsiData(data) {
+        setPsiData(data);
+    }
+
+    function getUVData(data) {
+        setUVData(data);
+    }
+
+    function gettwohourData(data) {
+        settwohourData(data);
+    }
+
+    function gettwentyfourhourData(data) {
+        settwentyfourhourData(data);
+    }
+
+    function getfourdayData(data) {
+        setfourdayData(data);
+    }
+
+
     return (
         <>
             <Router basename = '/Group4-Project1'>
@@ -27,22 +59,26 @@ function Home() {
                 <div className="mapArea">
                     <Switch>
                         <Route className='leaflet-container' path='/2hrs'>
-                            <TwoHoursNowcast />
+                            <GetNEAData dataType="2hour" getData={gettwohourData}/>
+                            <TwoHoursNowcast twohourData={twohourData}/>
                         </Route>
                         <Route className='leaflet-container' path='/24hrs'>
-                            <TwentyfourHoursForecast />
+                            <GetNEAData dataType="24hour" getData={gettwentyfourhourData}/>
+                            <TwentyfourHoursForecast twentyfourhourData={twentyfourhourData}/>
                         </Route>
                         {/* <Route path='/4days'>
                             <FourDaysForecast />
                         </Route> */}
                         <Route className='leaflet-container' path='/PSI'>
-                            <PSI />
+                            <GetNEAData dataType="psi" getData={getPsiData}/>
+                            <PSI psiData={psiData}/>
                         </Route>
                         {/* <Route path='/UV'>
                             <UV />
                         </Route> */}
                         <Route exact path='/'>
-                            <h2> This is the empty page</h2>
+                            <GetNEAData dataType="2hour" getData={gettwohourData}/>
+                            <TwoHoursNowcast twohourData={twohourData}/>
                         </Route>
                     </Switch>
                 </div>
@@ -50,12 +86,14 @@ function Home() {
             <div className="information">
                 <div className="container">
                     <div >
-                        <FourDaysForecast />
+                        <GetNEAData dataType="4day" getData={getfourdayData}/>
+                        <FourDaysForecast fourdayData={fourdayData}/>
                     </div>
                 </div>
                 <div className="container">
                     <div className="UVcontainer">
-                        <UV />
+                        <GetNEAData dataType="uvindex" getData={getUVData}/>
+                        <UVDisplay uvData={uvData}/>
                     </div>
                 </div>
             </div>
