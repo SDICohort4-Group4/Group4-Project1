@@ -13,13 +13,16 @@ const iconWeather= (weather) => {
         case "Cloudy":
             weatherIcon = 'partial-cloudy.png'
             break;
-
+        case "Thundery Showers":
+            weatherIcon = 'partial-cloudy.png'
+            break;
         
     }
 
     return new L.Icon({
         iconUrl: require('../assets/icons/' + weatherIcon),
-        iconSize: new L.Point(15,15),
+        iconSize: (15),
+        iconAnchor: [10, 15],
         popupAnchor: [5, -7],
         className: "icon-style"
     });
