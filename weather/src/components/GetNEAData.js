@@ -38,8 +38,7 @@ function GetNEAData(props) {
     })
   
     if (response.status===200){
-      let data={...response.data.items[0]};
-      props.getData(data);
+     props.getData({...response.data.items[0]});
     
     }
   }
@@ -49,13 +48,13 @@ export default GetNEAData;
 
 //Reference
 
-  //Pass in dataType="xxx" 
-  //Sample code:  
-  
-  //function getData(data) {
-  //  setData(data);
-  //}
-  //<GetNEAData dataType="2hour" getData={getData}/> 
+  // Pass in dataType="xxx" 
+  // Sample code:  
+  // function getData(data) {
+  //  setData(data); }
+
+  // in parent component use:
+  // <GetNEAData dataType="2hour" getData={getData}/> 
 
   // PSI dataType="psi"
       // data.readings
