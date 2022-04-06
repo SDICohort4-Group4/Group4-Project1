@@ -120,4 +120,8 @@ table {
     background-color: white;
 }
 
-
+.fourDayIcon{
+    height:40px;
+    position: relative;
+    top: 5px;
+}
