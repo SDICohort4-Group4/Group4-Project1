@@ -40,7 +40,7 @@ function GetNEAData(props) {
     if (response.status===200){
       let data={...response.data.items[0]};
       props.getData(data);
- 
+    
     }
   }
 }
@@ -63,7 +63,9 @@ export default GetNEAData;
       // data.readings.pm25_twenty_four_hourly.national
 
   // UV index dataType="uvindex"
-      // data.value
+      // data.index[x].value 
+      // there is a value for every hour
+      // for latest value use x=0
 
   // 2 hour weather dataType="2hour"
       // data.forecasts[x]
