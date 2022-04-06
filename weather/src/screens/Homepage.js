@@ -10,7 +10,6 @@ import {
 import '../assets/styles/styles.css'
 import {TwoHoursNowcast, TwentyfourHoursForecast, FourDaysForecast, PSI, UV} from '../routes/routes';
 
-<<<<<<< HEAD
 function Home() {
     return (
         <>
@@ -23,24 +22,6 @@ function Home() {
                         <NavLink className='link'to ='/PSI'>PSI</NavLink>
                         {/* <NavLink className='link'to ='/UV'>UV</NavLink> */}
                         <Link to='/'></Link>
-=======
-function Home(){
-    
-
-    
-        return(
-            <>
-                <Router basename = '/Group4-Project1'>
-                    <div className='navBar'>
-                        <div>
-                            <NavLink className='link' to ='/2hrs'>2 Hrs</NavLink>
-                            <NavLink className='link'to ='/24hrs'>24 Hrs</NavLink>
-                            <NavLink className='link'to ='/4days'>4 Days</NavLink>
-                            <NavLink className='link'to ='/PSI'>PSI</NavLink>
-                            <NavLink className='link'to ='/UV'>UV</NavLink>
-                            <Link to='/'></Link>
-                        </div>
->>>>>>> 8d0cad7bd2dfd758fe79360ed523f74b1b088588
                     </div>
                 </div>
                 <div className="mapArea">
@@ -71,7 +52,6 @@ function Home(){
                     <div >
                         <FourDaysForecast />
                     </div>
-<<<<<<< HEAD
                 </div>
                 <div className="container">
                     <div className="UVcontainer">
@@ -81,12 +61,6 @@ function Home(){
             </div>
         </>
     )
-=======
-                </Router>
-            </>
-        )
-    
->>>>>>> 8d0cad7bd2dfd758fe79360ed523f74b1b088588
 }
 
 export default Home;
