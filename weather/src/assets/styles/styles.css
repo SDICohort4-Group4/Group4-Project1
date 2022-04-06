@@ -71,15 +71,16 @@
     box-sizing: border-box;
     margin: 20px 0px 20px;
     text-align: center;
+    
 }
 
 .UVinfographic_container {
-    /* border: 1px solid purple; */
     float: left;
     width: 50%;
     text-align: center;
-    font-size: 60px;
-    /* height: 100%; */
+    font-size: 100px;
+    position: relative;
+    top:40px;   
 }
 
 .UVlegend_container {
