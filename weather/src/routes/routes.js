@@ -1,23 +1,13 @@
 import { useParams } from 'react-router-dom'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import L from 'leaflet';
 import 'leaflet/dist/leaflet.css'
 import CreateMarkers from './marker.js'
-
-
-let testObj = [
-    {location: "north", forecast:{weather: "sunny"}},
-    {location: "south", forecast:{weather: "sunny"}},
-    {location: "east", forecast:{weather: "sunny"}},
-    {location: "west", forecast:{weather: "rainny"}},
-    {location: "central", forecast:{weather: "sunny"}}
-]
 
 let xy = [1.3521,103.8198];
 let fix_zoom = 11;
 let viscosity = 1;
 
-export function TwoHoursNowcast (xy, fix_zoom,viscosity){
+export function TwoHoursNowcast (props){
     return(
         <>
             <h2>This is the 2 hours forecast</h2>
@@ -27,7 +17,7 @@ export function TwoHoursNowcast (xy, fix_zoom,viscosity){
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <CreateMarkers obj={testObj}/>
+                <CreateMarkers obj={props.dataArr}/>
             </MapContainer>
         </>
     )

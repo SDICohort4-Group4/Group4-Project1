@@ -4,21 +4,23 @@ import { Marker, Popup } from 'react-leaflet'
 const iconWeather= (weather) => {
     let weatherIcon;
     switch(weather) {
-        case "sunny":
+        case "Moderate Rain":
             weatherIcon = 'partial-cloudy.png'
             break;
-        case "rainny":
+        case "Light Rain":
             weatherIcon = 'rain.png'
             break;
+        case "Cloudy":
+            weatherIcon = 'partial-cloudy.png'
+            break;
+
         
     }
 
-    console.log(weatherIcon)
-
     return new L.Icon({
         iconUrl: require('../assets/icons/' + weatherIcon),
-        iconSize: new L.Point(20,20),
-        popupAnchor: [5, -15],
+        iconSize: new L.Point(15,15),
+        popupAnchor: [5, -7],
         className: "icon-style"
     });
 }
@@ -51,15 +53,14 @@ const locationCoor = (location) => {
 
 
 function CreateMarkers(props) {
-    
     function markers() {
         // return array of markers
         return(
             props.obj.map((ele, i) => {
                 return(
-                <Marker key={i} position={locationCoor(ele.location)} icon={iconWeather(ele.forecast.weather)}>
+                <Marker key={i} position={ele.coordinate} icon={iconWeather(ele.forecast)}>
                     <Popup>
-                    {ele.location}
+                    {ele.name}
                     </Popup>
                 </Marker>
                 )

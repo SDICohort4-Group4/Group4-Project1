@@ -6,7 +6,6 @@ const API = axios.create({
 });
 
 function GetNEAData(props) {
-
   useEffect(()=>{
     let dataType="";
    
@@ -29,18 +28,29 @@ function GetNEAData(props) {
     return;
   },[])
 
+
   async function findNEAData(dataType) {
-    let nowTime = new Date().toISOString().slice(0, -5);
-    const response = await API.get(dataType,{
-      params: {
-        date: [nowTime],
-      }
-    })
+    const response = await API.get(dataType)
   
     if (response.status===200){
-      let data={...response.data.items[0]};
-      props.getData(data);
- 
+
+      // create an array of object {name: , coordinate} from area_metadata
+      let coorArr = response.data.area_metadata.map(ele => {
+        let formatObj = {
+          name: ele.name, 
+          coordinate: [ele.label_location.latitude, ele.label_location.longitude]
+        }
+        return formatObj;
+        })
+      
+      // pharse through forcastArr to add forcast into coor Arr
+      let returnArr = response.data.items[0].forecasts.map(ele=> {
+        let tempArr = coorArr.filter(coorEle => coorEle.name === ele.area);
+        let formatObj = {...tempArr[0], forecast: ele.forecast}
+        return formatObj
+      })
+      //return data in {name: , coordinate: , forecast: }
+      props.getData(returnArr);
     }
   }
 }

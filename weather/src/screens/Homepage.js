@@ -9,8 +9,20 @@ import {
 } from 'react-router-dom';
 import '../assets/styles/styles.css'
 import {TwoHoursNowcast, TwentyfourHoursForecast, FourDaysForecast, PSI, UV} from '../routes/routes';
+import GetNEAData from '../components/GetNEAData';
+import { useState } from 'react';
+
 
 function Home() {
+    let [data, setData] = useState("");
+
+    function getData(obj) {
+        console.log(obj)
+        setData(obj);
+    }
+
+
+
     return (
         <>
             <Router basename = '/Group4-Project1'>
@@ -27,20 +39,15 @@ function Home() {
                 <div className="mapArea">
                     <Switch>
                         <Route className='leaflet-container' path='/2hrs'>
-                            <TwoHoursNowcast />
+                            <GetNEAData dataType={"2HOUR"} getData={getData}/>
+                            {data? <TwoHoursNowcast dataArr={data}/>: null}
                         </Route>
                         <Route className='leaflet-container' path='/24hrs'>
                             <TwentyfourHoursForecast />
                         </Route>
-                        {/* <Route path='/4days'>
-                            <FourDaysForecast />
-                        </Route> */}
                         <Route className='leaflet-container' path='/PSI'>
                             <PSI />
                         </Route>
-                        {/* <Route path='/UV'>
-                            <UV />
-                        </Route> */}
                         <Route exact path='/'>
                             <h2> This is the empty page</h2>
                         </Route>
