@@ -4,6 +4,15 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css'
 import CreateMarkers from './marker.js'
 
+
+let testObj = [
+    {location: "north", forecast:{weather: "sunny"}},
+    {location: "south", forecast:{weather: "sunny"}},
+    {location: "east", forecast:{weather: "sunny"}},
+    {location: "west", forecast:{weather: "rainny"}},
+    {location: "central", forecast:{weather: "sunny"}}
+]
+
 let xy = [1.3521,103.8198];
 let fix_zoom = 11;
 let viscosity = 1;
@@ -16,10 +25,9 @@ export function TwoHoursNowcast (xy, fix_zoom,viscosity){
             maxBounds={[[1.3521, 103.5198], [1.3521, 104.1198]]} maxBoundsViscosity={1}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <CreateMarkers obj={[{coordinate: [1.3521, 103.8198], location: "Central"},
-            {coordinate: [1.3521, 103.7198], location: "West"}]}/>
+                <CreateMarkers obj={testObj}/>
             </MapContainer>
         </>
     )

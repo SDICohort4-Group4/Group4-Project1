@@ -33,6 +33,14 @@
     height: 400px;
 }
 
+
+.icon-style {
+    background-color: rgba(241, 241, 241, 0.534);
+    padding: 5px;
+    border-radius: 50%;
+    filter: invert(1);
+}
+
 .information {
     width: 100%;
     height: 400px;
@@ -108,4 +116,5 @@ table {
 .background_white{
     background-color: white;
 }
+
 
