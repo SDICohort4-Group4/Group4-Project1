@@ -17,10 +17,9 @@ const iconWeather= (weather) => {
 
     return new L.Icon({
         iconUrl: require('../assets/icons/' + weatherIcon),
-        iconSize: new L.Point(30,30),
+        iconSize: new L.Point(20,20),
         popupAnchor: [5, -15],
         className: "icon-style"
-    
     });
 }
 

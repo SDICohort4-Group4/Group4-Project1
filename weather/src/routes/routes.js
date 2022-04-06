@@ -6,7 +6,7 @@ import CreateMarkers from './marker.js'
 
 let testObj = [
     {location: "north", forecast:{weather: "sunny"}},
-    {location: "south", forecast:{weather: "rainny"}},
+    {location: "south", forecast:{weather: "sunny"}},
     {location: "east", forecast:{weather: "sunny"}},
     {location: "west", forecast:{weather: "rainny"}},
     {location: "central", forecast:{weather: "sunny"}}
