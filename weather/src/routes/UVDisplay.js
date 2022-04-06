@@ -6,12 +6,8 @@ export default function UVDisplay(props){
                 <div>
                     <h2 className="container_headerbox">UV INDEX</h2>
                 </div>
-                <div className="UVinfographic_container">
-                    <div>
-                        <br/>
-                        {props.uvData.index===undefined ? null: (props.uvData.index[0].value)}
-                        
-                    </div>
+                <div className="UVinfographic_container">                                
+                    {props.uvData.index===undefined ? null: UVReading(props.uvData.index[0].value)}                                   
                 </div>
                 <div >
                     <table className="UVlegend_container">
@@ -47,4 +43,21 @@ export default function UVDisplay(props){
             </div>
         </>
     )
+}
+
+
+function UVReading(uvData){
+        
+    if(uvData>=0 && uvData<3) 
+         return <div style={{color:"#579C00"}}>{uvData}</div>
+    if(uvData>=3 && uvData<6)
+        return <div style={{color:"#F8CE09"}}>{uvData}</div>
+    if(uvData>=6 && uvData<8)
+        return <div style={{color:"#FF8400"}}>{uvData}</div>
+    if(uvData>=8 && uvData<11)
+        return <div style={{color:"#D80000"}}>{uvData}</div>
+    if(uvData>10)
+        return <div style={{color:"#7031A1"}}>{uvData}</div>
+    
+    return uvData;    
 }
