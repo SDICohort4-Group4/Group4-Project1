@@ -1,6 +1,7 @@
 * {
     margin: 0px;
     padding : 0px;
+    background-color: #FAFAFA;
 }
 
 .link {
@@ -31,3 +32,89 @@
     width: 100%;
     height: 400px;
 }
+
+
+.icon-style {
+    background-color: rgba(241, 241, 241, 0.534);
+    padding: 5px;
+    border-radius: 50%;
+    filter: invert(1);
+}
+
+.information {
+    width: 100%;
+    height: 400px;
+    box-sizing: border-box;
+    display: flex;
+    /* border: 1px solid orange; */
+}
+
+.container {
+    border: 1px solid grey;
+    width: 50%;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 1px 20px 50px;
+}
+
+.UVcontainer {
+    /* border: 1px solid pink; */
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.container_headerbox {
+    /* border: 1px solid yellow; */
+    width: 100%;
+    height: 10%;
+    box-sizing: border-box;
+    margin: 20px 0px 20px;
+}
+
+.UVinfographic_container {
+    /* border: 1px solid purple; */
+    float: left;
+    width: 50%;
+    /* height: 100%; */
+}
+
+.UVlegend_container {
+    /* border: 1px solid cyan; */
+    display: table;
+    float: right;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.UVlegend_head {
+    /* border-bottom: 1px solid black; */
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.8px;
+}
+
+
+th {
+    border-bottom: 1px solid black;
+    padding: 8px;
+}
+
+td {
+    border-bottom: 1px solid rgb(209, 207, 207);
+}
+
+tr>td{
+    padding: 8px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.background_white{
+    background-color: white;
+}
+
+
