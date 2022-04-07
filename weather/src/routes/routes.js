@@ -1,7 +1,8 @@
-import { useParams } from 'react-router-dom'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
-import CreateMarkers from './marker.js'
+import { useParams } from 'react-router-dom';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import CreateWeatherMarkers from './weather-marker.js';
+import CreatePSIMarkers from './psi-marker.js';
 
 let xy = [1.3521,103.8198];
 let fix_zoom = 11;
@@ -17,7 +18,7 @@ export function TwoHoursNowcast (props){
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                {props.dataArr?<CreateMarkers obj={props.dataArr} iconSize={15}/>: null}
+                {props.dataArr?<CreateWeatherMarkers obj={props.dataArr} iconSize={18}/>: null}
             </MapContainer>
         </>
     )
@@ -33,7 +34,7 @@ export function TwentyfourHoursForecast (props){
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                {props.dataArr?<CreateMarkers obj={props.dataArr} iconSize={30}/>: null}
+                {props.dataArr?<CreateWeatherMarkers obj={props.dataArr} iconSize={30}/>: null}
             </MapContainer>
         </>
     )
@@ -54,6 +55,7 @@ export function PSI(props){
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
+                {props.dataArr?<CreatePSIMarkers obj={props.dataArr} iconSize={40}/>: null}
             </MapContainer>
         </>
     )

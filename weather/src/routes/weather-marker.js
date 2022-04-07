@@ -1,5 +1,5 @@
 import L from 'leaflet';
-import { Marker, Popup } from 'react-leaflet'
+import { Marker, Tooltip } from 'react-leaflet'
 
 const iconWeather= (weather, iconSize) => {
     let weatherIcon;
@@ -23,15 +23,15 @@ const iconWeather= (weather, iconSize) => {
     return new L.Icon({
         iconUrl: require('../assets/icons/' + weatherIcon),
         iconSize: (iconSize),
-        iconAnchor: [iconSize, iconSize],
-        popupAnchor: [5, iconSize/2],
+        iconAnchor: [7, iconSize],
+        tooltipAnchor:[0, 0],
         className: "icon-style"
     });
 }
 
 
 
-function CreateMarkers(props) {
+function CreateWeatherMarkers(props) {
     function markers() {
         // return array of markers
         if (props.obj) {
@@ -39,9 +39,9 @@ function CreateMarkers(props) {
                 props.obj.map((ele, i) => {
                     return(
                     <Marker key={i} position={ele.coordinate} icon={iconWeather(ele.forecast, props.iconSize)}>
-                        <Popup>
+                        <Tooltip>
                         {ele.name}
-                        </Popup>
+                        </Tooltip>
                     </Marker>
                     )
                 })
@@ -59,4 +59,4 @@ function CreateMarkers(props) {
 }
 
 
-export default CreateMarkers;
+export default CreateWeatherMarkers;
