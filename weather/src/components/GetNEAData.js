@@ -1,5 +1,13 @@
 import axios from 'axios';
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  withRouter,
+  NavLink,
+} from 'react-router-dom';
 
 const API = axios.create({
   baseURL: "https://api.data.gov.sg/v1/environment",
@@ -35,40 +43,26 @@ const locationCoor = (location) => {
 
 
 function GetNEAData(props) {
-  useEffect(()=>{
 
-    switch(props.dataType.toUpperCase()){
-      case "PSI": findPSIData("/psi");
+  let [dataType, setDataType] = useState();
+
+  function queryData(type){
+    setDataType(type);
+    switch(type.toUpperCase()){
+      case "PSI": 
+        findPSIData("/psi");
         break;
-      case "UVINDEX": findNEAData("/uv-index");
+      case "2HOUR": 
+        find2Hr("/2-hour-weather-forecast");
         break;
-      case "2HOUR": find2Hr("/2-hour-weather-forecast");
+      case "24HOUR": 
+        find24Hr("/24-hour-weather-forecast");
         break;
-      case "24HOUR": find24Hr("/24-hour-weather-forecast");
-        break;
-      case "4DAY": findNEAData("/4-day-weather-forecast");
-        break;
-      default: find2Hr("/2-hour-weather-forecast");
+      default: 
+        find2Hr("/2-hour-weather-forecast");
     }
-
-    return;
-  },[])
-
-
-  async function findNEAData(dataType) {
-    let nowTime = new Date().toISOString().slice(0, -5);
-    const response = await API.get(dataType,{
-      params: {
-        date: [nowTime],
-      }
-    })
-  
-    if (response.status===200){
-     props.getData({...response.data.items[0]});
-    
-    }
+    return
   }
-
 
   //function to return 24hr data
   async function find24Hr(dataType) {
@@ -122,7 +116,6 @@ function GetNEAData(props) {
   // function to return 2hr data
   async function find2Hr(dataType) {
     const response = await API.get(dataType);
-
     if (response.status===200){
       
       // create an array of object {name: , coordinate} from area_metadata
@@ -145,9 +138,21 @@ function GetNEAData(props) {
     }
   }
 
+  return(
+    <div className='navBar'>
+      <div>
+          <NavLink onClick={() => queryData('2HOUR')} className='link' to ='/2hrs'>2 Hrs</NavLink>
+          <NavLink onClick={() => queryData('24HOUR')} className='link'to ='/24hrs'>24 Hrs</NavLink>
+          {/* <NavLink className='link'to ='/4days'>4 Days</NavLink> */}
+          <NavLink onClick={() => queryData('PSI')} className='link'to ='/PSI'>PSI</NavLink>
+          {/* <NavLink className='link'to ='/UV'>UV</NavLink> */}
+          <Link onLoad={() => queryData('')} to='/'></Link>
+      </div>
+  </div>
+
+  )
+
 }
-
-
 
 export default GetNEAData;
 
