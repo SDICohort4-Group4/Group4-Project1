@@ -24,7 +24,7 @@ const iconWeather= (weather, iconSize) => {
         iconUrl: require('../assets/icons/' + weatherIcon),
         iconSize: (iconSize),
         iconAnchor: [7, iconSize],
-        popupAnchor: [iconSize/2, -(iconSize/2)],
+        tooltipAnchor:[0, 0],
         className: "icon-style"
     });
 }

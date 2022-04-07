@@ -4,8 +4,9 @@ export default function FourDaysForecast(props){
     return(
         <>  
             <div>
-                <h2 className="container_headerbox">Forecasts for Next 4 days</h2>
+                <h3 className="container_headerbox">Forecasts for Next 4 days</h3>
             </div>
+            <div className="four-day-flexbox">
                 {props.fourdayData.forecasts===undefined ? null 
                 : 
                 <table>
@@ -19,6 +20,7 @@ export default function FourDaysForecast(props){
                   </tbody>
                 </table>
                 }
+            </div>
         </>
     )
 }
