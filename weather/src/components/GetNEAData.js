@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {
   Link,
   NavLink,
@@ -41,41 +41,40 @@ const locationCoor = (location) => {
 
 function GetNEAData(props) {
   const location = useLocation();
+  let [updateCount, setUpdateCount] = useState(0);
 
   useEffect(()=>{
     // console.log(location.pathname) for debugging
-    switch (location.pathname.toUpperCase()){
-      case "/PSI":
         findPSIData("/psi");
-        break;
-      case "/2HRS": 
         find2Hr("/2-hour-weather-forecast");
-        break;
-      case "/24HRS":
         find24Hr("/24-hour-weather-forecast");
-        break;
-      default: 
-        find2Hr("/2-hour-weather-forecast");
-    }
+        find4D("/4-day-weather-forecast");
+        findUV("/uv-index");
+    
+    let interval = setTimeout(()=>{
+      setUpdateCount(updateCount => updateCount + 1);
+    }, 300000);
 
-  },[])
+    return ()=> clearTimeout(interval);
+  },[updateCount])
 
-  function queryData(type){
-    switch(type.toUpperCase()){
-      case "PSI": 
-        findPSIData("/psi");
-        break;
-      case "2HOUR": 
-        find2Hr("/2-hour-weather-forecast");
-        break;
-      case "24HOUR": 
-        find24Hr("/24-hour-weather-forecast");
-        break;
-      default: 
-        find2Hr("/2-hour-weather-forecast");
-    }
-    return
-  }
+  // removed onclicked function
+  // function queryData(type){
+  //   switch(type.toUpperCase()){
+  //     case "PSI": 
+  //       findPSIData("/psi");
+  //       break;
+  //     case "2HOUR": 
+  //       find2Hr("/2-hour-weather-forecast");
+  //       break;
+  //     case "24HOUR": 
+  //       find24Hr("/24-hour-weather-forecast");
+  //       break;
+  //     default: 
+  //       find2Hr("/2-hour-weather-forecast");
+  //   }
+  //   return
+  // }
 
   //function to return 24hr data
   async function find24Hr(dataType) {
@@ -96,7 +95,7 @@ function GetNEAData(props) {
         })
 
       //return data in {name: string, coordinate: [Array of lat and long], forecast: string }
-      props.getData(forecastArr);
+      props.get24HrData(forecastArr);
     }
   }
 
@@ -119,7 +118,7 @@ function GetNEAData(props) {
         })
 
       //return data in {name: string, coordinate: [Array of lat and long], forecast: string }
-      props.getData(psiArr);
+      props.getPsiData(psiArr);
     }
   }
 
@@ -145,23 +144,37 @@ function GetNEAData(props) {
         return formatObj;
       })
       //return data in {name: string, coordinate: [Array of lat and long], forecast: string }
-      props.getData(returnArr);
+      props.get2HrData(returnArr);
     }
   }
 
-  return(
-    <div className='navBar'>
-      <div>
-          <NavLink onClick={() => queryData('2HOUR')} className='link' to ='/2hrs'>2 Hrs</NavLink>
-          <NavLink onClick={() => queryData('24HOUR')} className='link'to ='/24hrs'>24 Hrs</NavLink>
-          {/* <NavLink className='link'to ='/4days'>4 Days</NavLink> */}
-          <NavLink onClick={() => queryData('PSI')} className='link'to ='/PSI'>PSI</NavLink>
-          {/* <NavLink className='link'to ='/UV'>UV</NavLink> */}
-          <Link onLoad={() => queryData('')} to='/'></Link>
-      </div>
-  </div>
+  async function find4D(dataType) {
+    let nowTime = new Date().toISOString().slice(0, -5);
+    const response = await API.get(dataType,{
+    params: {
+        date: [nowTime],
+    }
+    })
 
-  )
+    if (response.status===200){
+    props.get4D({...response.data.items[0]});
+    
+    }
+  }
+
+  async function findUV(dataType) {
+      let nowTime = new Date().toISOString().slice(0, -5);
+      const response = await API.get(dataType,{
+      params: {
+          date: [nowTime],
+      }
+      })
+
+      if (response.status===200){
+      props.getUV({...response.data.items[0]});
+      
+      }
+  }
 
 }
 
