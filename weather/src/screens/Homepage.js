@@ -31,10 +31,12 @@ function Home() {
     }
 
     function gettwohourData(data) {
+        console.log(2,data)
         settwohourData(data);
     }
 
     function gettwentyfourhourData(data) {
+        console.log(data);
         settwentyfourhourData(data);
     }
 
@@ -60,25 +62,19 @@ function Home() {
                     <Switch>
                         <Route className='leaflet-container' path='/2hrs'>
                             <GetNEAData dataType="2hour" getData={gettwohourData}/>
-                            <TwoHoursNowcast twohourData={twohourData}/>
+                            {Object.keys(twohourData).length !== 0? <TwoHoursNowcast dataArr={twohourData}/>: <TwoHoursNowcast />}
                         </Route>
                         <Route className='leaflet-container' path='/24hrs'>
                             <GetNEAData dataType="24hour" getData={gettwentyfourhourData}/>
-                            <TwentyfourHoursForecast twentyfourhourData={twentyfourhourData}/>
+                            {Object.keys(twentyfourhourData).length !== 0?<TwentyfourHoursForecast dataArr={twentyfourhourData}/>: <TwentyfourHoursForecast />}
                         </Route>
-                        {/* <Route path='/4days'>
-                            <FourDaysForecast />
-                        </Route> */}
                         <Route className='leaflet-container' path='/PSI'>
                             <GetNEAData dataType="psi" getData={getPsiData}/>
                             <PSI psiData={psiData}/>
                         </Route>
-                        {/* <Route path='/UV'>
-                            <UV />
-                        </Route> */}
                         <Route exact path='/'>
                             <GetNEAData dataType="2hour" getData={gettwohourData}/>
-                            <TwoHoursNowcast twohourData={twohourData}/>
+                            {Object.keys(twohourData).length !== 0? <TwoHoursNowcast dataArr={twohourData}/>: <TwoHoursNowcast />}
                         </Route>
                     </Switch>
                 </div>
