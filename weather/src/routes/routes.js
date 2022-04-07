@@ -12,7 +12,7 @@ export function TwoHoursNowcast (props){
     return(
         <>
             <h2>2 hours forecast</h2>
-            <MapContainer center={[1.3521, 103.8198]} zoom={11} maxZoom={11} minZoom={11}
+            <MapContainer center={[1.3521, 103.8198]} zoom={11} maxZoom={11} minZoom={11} zoomControl={false}
             maxBounds={[[1.3521, 103.5198], [1.3521, 104.1198]]} maxBoundsViscosity={1}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -28,7 +28,7 @@ export function TwentyfourHoursForecast (props){
     return(
         <>
             <h2>24 hours forecast</h2> 
-            <MapContainer center={[1.3521, 103.8198]} zoom={11} maxZoom={11} minZoom={11}
+            <MapContainer center={[1.3521, 103.8198]} zoom={11} maxZoom={11} minZoom={11} zoomControl={false}
             maxBounds={[[1.3521, 103.5198], [1.3521, 104.1198]]} maxBoundsViscosity={1}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -44,7 +44,7 @@ export function PSI(props){
     return(
         <>  
             <h2>24 hours PSI</h2>
-            <MapContainer center={[1.3521, 103.8198]} zoom={11} maxZoom={11} minZoom={11}
+            <MapContainer center={[1.3521, 103.8198]} zoom={11} maxZoom={11} minZoom={11} zoomControl={false}
             maxBounds={[[1.3521, 103.5198], [1.3521, 104.1198]]} maxBoundsViscosity={1}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

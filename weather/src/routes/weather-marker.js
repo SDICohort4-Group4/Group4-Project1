@@ -1,5 +1,5 @@
 import L from 'leaflet';
-import { Marker, Popup, Tooltip } from 'react-leaflet'
+import { Marker, Tooltip } from 'react-leaflet'
 
 const iconWeather= (weather, iconSize) => {
     let weatherIcon;
