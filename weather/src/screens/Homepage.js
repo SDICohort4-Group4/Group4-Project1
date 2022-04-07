@@ -6,6 +6,7 @@ import {
     Route,
     Link,
     withRouter,
+    Redirect,
     NavLink,
 } from 'react-router-dom';
 import '../assets/styles/styles.css'
@@ -81,6 +82,7 @@ function Home() {
                             {/* <GetNEAData dataType="2hour" getData={gettwohourData}/> */}
                             {Object.keys(mapData2Hr).length !== 0? <TwoHoursNowcast dataArr={mapData2Hr}/>: <TwoHoursNowcast />}
                         </Route>
+                        <Route render={() => <Redirect to={{pathname: "/"}} />} />
                     </Switch>
                 </div>
             </Router>
