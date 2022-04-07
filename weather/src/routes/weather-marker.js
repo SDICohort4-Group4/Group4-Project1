@@ -23,15 +23,15 @@ const iconWeather= (weather, iconSize) => {
     return new L.Icon({
         iconUrl: require('../assets/icons/' + weatherIcon),
         iconSize: (iconSize),
-        iconAnchor: [iconSize, iconSize],
-        popupAnchor: [5, iconSize/2],
+        iconAnchor: [7, iconSize],
+        popupAnchor: [5, -(iconSize/2)],
         className: "icon-style"
     });
 }
 
 
 
-function CreateMarkers(props) {
+function CreateWeatherMarkers(props) {
     function markers() {
         // return array of markers
         if (props.obj) {
@@ -59,4 +59,4 @@ function CreateMarkers(props) {
 }
 
 
-export default CreateMarkers;
+export default CreateWeatherMarkers;
