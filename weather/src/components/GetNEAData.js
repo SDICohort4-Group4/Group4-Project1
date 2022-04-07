@@ -46,6 +46,9 @@ function GetNEAData(props) {
 
   let [dataType, setDataType] = useState();
 
+  
+
+
   function queryData(type){
     setDataType(type);
     switch(type.toUpperCase()){

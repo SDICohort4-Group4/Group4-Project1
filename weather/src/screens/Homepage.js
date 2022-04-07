@@ -22,17 +22,17 @@ function Home() {
     const [fourdayData, setfourdayData]=useState({});
  
     function getUVData(data) {
-        console.log("uv", data)
+        // console.log("uv", data) for debugging
         setUVData(data);
     }
 
     function getMapData(data) {
-        console.log("map",data)
+        // console.log("map",data) for debugging
         setMapData(data);
     }
 
     function getfourdayData(data) {
-        console.log("4d", data)
+        // console.log("4d", data) for debugging
         setfourdayData(data);
     }
 
