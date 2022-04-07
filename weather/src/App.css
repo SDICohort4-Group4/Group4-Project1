@@ -4,8 +4,7 @@ body {
   align-items: center;
   align-content: center;
   height: 100vh;
-  background: linear-gradient(rgb(213, 255, 252), rgb(149, 243, 247));
-  /* overflow: hidden; */
+  background: linear-gradient(rgb(145, 145, 145), rgb(126, 229, 233));
 }
 
 .App {
