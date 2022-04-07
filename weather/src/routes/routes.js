@@ -44,10 +44,6 @@ export function PSI(props){
     return(
         <>  
             <h2>This is the PSI:
-            {props.psiData.readings===undefined ? null 
-            :  
-             (props.psiData.readings.psi_twenty_four_hourly.national)
-            }
             </h2>
             <MapContainer center={[1.3521, 103.8198]} zoom={11} maxZoom={11} minZoom={11}
             maxBounds={[[1.3521, 103.5198], [1.3521, 104.1198]]} maxBoundsViscosity={1} zoomControl={false}>
