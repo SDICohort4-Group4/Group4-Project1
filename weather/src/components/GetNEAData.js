@@ -1,12 +1,9 @@
 import axios from 'axios';
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link,
-  withRouter,
   NavLink,
+  useLocation
 } from 'react-router-dom';
 
 const API = axios.create({
@@ -43,11 +40,27 @@ const locationCoor = (location) => {
 
 
 function GetNEAData(props) {
+  const location = useLocation();
 
-  let [dataType, setDataType] = useState();
+  useEffect(()=>{
+    console.log(location.pathname)
+    switch (location.pathname.toUpperCase()){
+      case "/PSI":
+        findPSIData("/psi");
+        break;
+      case "/2HRS": 
+        find2Hr("/2-hour-weather-forecast");
+        break;
+      case "/24HRS":
+        find24Hr("/24-hour-weather-forecast");
+        break;
+      default: 
+        find2Hr("/2-hour-weather-forecast");
+    }
+
+  },[])
 
   function queryData(type){
-    setDataType(type);
     switch(type.toUpperCase()){
       case "PSI": 
         findPSIData("/psi");

@@ -44,7 +44,7 @@ function Get4DUV(props) {
         // change the updateCount every 10s to update uv and 4day data
         let interval = setTimeout(()=>{
             setUpdateCount(updateCount => updateCount + 1);
-            console.log(updateCount)
+            // console.log(updateCount) for debugging
         }, 10000);
 
         return ()=> clearTimeout(interval)
