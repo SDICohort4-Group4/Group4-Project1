@@ -176,7 +176,7 @@ table {
     top: 5px;
 }
 
-@media (max-width:500px) {
+@media (max-width:540px) {
     .information {
         flex-direction: column;
     }
