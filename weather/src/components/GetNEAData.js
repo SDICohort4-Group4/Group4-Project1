@@ -43,7 +43,7 @@ function GetNEAData(props) {
   const location = useLocation();
 
   useEffect(()=>{
-    console.log(location.pathname)
+    // console.log(location.pathname) for debugging
     switch (location.pathname.toUpperCase()){
       case "/PSI":
         findPSIData("/psi");
@@ -82,7 +82,6 @@ function GetNEAData(props) {
     const response = await API.get(dataType);
   
     if (response.status===200){
-      console.log(response.data.items[0].periods[0]);
       // create an array of object {name: , coordinate} from area_metadata
       let obj = response.data.items[0].periods[0].regions
       let forecastArr = Object.keys(obj).map(ele => {
@@ -106,7 +105,6 @@ function GetNEAData(props) {
     const response = await API.get(dataType);
   
     if (response.status===200){
-      console.log(response.data.items[0].readings.psi_twenty_four_hourly);
       // create an array of object {name: , coordinate} from area_metadata
       let obj = response.data.items[0].readings.psi_twenty_four_hourly
       let psiArr = Object.keys(obj).map(ele => {
