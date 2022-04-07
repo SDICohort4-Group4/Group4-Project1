@@ -1,37 +1,43 @@
 import L from 'leaflet';
-import { Marker, Popup } from 'react-leaflet'
+import { Marker, Tooltip } from 'react-leaflet'
 
 const iconWeather= (weather, iconSize) => {
     let weatherIcon;
     switch(weather) {
+        case "Heavy Rain":
         case "Moderate Rain":
-            weatherIcon = 'partial-cloudy.png'
-            break;
         case "Light Rain":
             weatherIcon = 'rain.png'
             break;
+        case "Partly Cloudy":
         case "Cloudy":
             weatherIcon = 'partial-cloudy.png'
             break;
+        case "Heavy Thundery Showers":
         case "Thundery Showers":
-            weatherIcon = 'partial-cloudy.png'
+            weatherIcon = 'storm.png'
+            break;
+        case "Fair":
+        case "Sunny":
+            weatherIcon = 'wi-sunny.png';
             break;
         default:
-            weatherIcon = 'partial-cloudy.png'
+            // console.log(weather)
+            weatherIcon = 'sad-sun.png'
     }
 
     return new L.Icon({
         iconUrl: require('../assets/icons/' + weatherIcon),
         iconSize: (iconSize),
-        iconAnchor: [iconSize, iconSize],
-        popupAnchor: [5, iconSize/2],
+        iconAnchor: [7, iconSize],
+        tooltipAnchor:[0, 0],
         className: "icon-style"
     });
 }
 
 
 
-function CreateMarkers(props) {
+function CreateWeatherMarkers(props) {
     function markers() {
         // return array of markers
         if (props.obj) {
@@ -39,9 +45,9 @@ function CreateMarkers(props) {
                 props.obj.map((ele, i) => {
                     return(
                     <Marker key={i} position={ele.coordinate} icon={iconWeather(ele.forecast, props.iconSize)}>
-                        <Popup>
-                        {ele.name}
-                        </Popup>
+                        <Tooltip>
+                        {ele.name}: {ele.forecast}
+                        </Tooltip>
                     </Marker>
                     )
                 })
@@ -59,4 +65,4 @@ function CreateMarkers(props) {
 }
 
 
-export default CreateMarkers;
+export default CreateWeatherMarkers;
