@@ -22,7 +22,7 @@ const iconWeather= (weather, iconSize) => {
             weatherIcon = 'wi-sunny.png';
             break;
         default:
-            console.log(weather)
+            // console.log(weather)
             weatherIcon = 'sad-sun.png'
     }
 
