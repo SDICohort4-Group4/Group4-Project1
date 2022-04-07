@@ -23,6 +23,7 @@ function Home() {
     const [fourdayData, setfourdayData]=useState({});
  
     function getPsiData(data) {
+        console.log("psi", data)
         setPsiData(data);
     }
 
@@ -31,12 +32,12 @@ function Home() {
     }
 
     function gettwohourData(data) {
-        console.log(2,data)
+        console.log("2hr",data)
         settwohourData(data);
     }
 
     function gettwentyfourhourData(data) {
-        console.log(data);
+        console.log("24hr",data);
         settwentyfourhourData(data);
     }
 
@@ -70,7 +71,7 @@ function Home() {
                         </Route>
                         <Route className='leaflet-container' path='/PSI'>
                             <GetNEAData dataType="psi" getData={getPsiData}/>
-                            <PSI psiData={psiData}/>
+                            {Object.keys(psiData).length !== 0? <PSI dataArr={psiData}/>: <PSI />}
                         </Route>
                         <Route exact path='/'>
                             <GetNEAData dataType="2hour" getData={gettwohourData}/>

@@ -9,20 +9,23 @@ const locationCoor = (location) => {
   let coordinate;
   switch(location) {
       case "north": 
-          coordinate = [1.432, 103.786528];
+          coordinate = [1.41803, 103.82];
           break;
       case "south": 
-          coordinate = [1.277, 103.819];
+          coordinate = [1.29587, 103.82];
           break;
       case "east":
-          coordinate = [1.345, 103.944];
+          coordinate = [1.35735, 103.94];
           break;
       case "west":
-          coordinate = [1.34039, 103.705];
+          coordinate = [1.35735, 103.7];
           break;
       case "central":
-          coordinate = [1.350772, 103.839];
+          coordinate = [1.35735, 103.82];
           break;           
+      case "national":
+          coordinate = [0,0];
+          break;
       default:
           alert(`${coordinate} is not defined`)
           return
@@ -33,10 +36,9 @@ const locationCoor = (location) => {
 
 function GetNEAData(props) {
   useEffect(()=>{
-    let dataType="";
-   
+
     switch(props.dataType.toUpperCase()){
-      case "PSI": dataType="/psi";
+      case "PSI": findPSIData("/psi");
         break;
       case "UVINDEX": findNEAData("/uv-index");
         break;
@@ -91,6 +93,31 @@ function GetNEAData(props) {
       props.getData(forecastArr);
     }
   }
+
+  //function to return PSI data
+  async function findPSIData(dataType) {
+    const response = await API.get(dataType);
+  
+    if (response.status===200){
+      console.log(response.data.items[0].readings.psi_twenty_four_hourly);
+      // create an array of object {name: , coordinate} from area_metadata
+      let obj = response.data.items[0].readings.psi_twenty_four_hourly
+      let psiArr = Object.keys(obj).map(ele => {
+
+        let formatObj = {
+          name: ele, 
+          coordinate: locationCoor(ele),
+          forecast: obj[ele]
+
+        }
+        return formatObj;
+        })
+
+      //return data in {name: string, coordinate: [Array of lat and long], forecast: string }
+      props.getData(psiArr);
+    }
+  }
+
 
   // function to return 2hr data
   async function find2Hr(dataType) {
