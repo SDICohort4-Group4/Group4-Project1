@@ -13,7 +13,7 @@ export default function FourDaysForecast(props){
                   <tbody>
                     {newArray.map((forecasts,index)=>(
                         <tr key={index}>
-                          <td>{weatherIcon(forecasts.forecast)}</td>
+                          <td><div className="td-date">{forecasts.date}{weatherIcon(forecasts.forecast)}</div></td>
                           <td>{forecasts.forecast}</td>
                         </tr>
                     ))}    
