@@ -37,8 +37,38 @@
     width: 100%;
     height: 400px;
     border: 1px solid rgb(134, 134, 134);
+    z-index: 1;
 }
 
+
+.map-psi-container{
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.legend{
+    background: linear-gradient(rgb(133, 152, 153), rgb(162, 190, 190));
+    border-radius: 3px 3px 0px 0px;
+    align-self: flex-start;
+    min-width: fit-content;
+    z-index: 2;
+}
+
+.legend > table {
+    width: 100%;
+}
+
+.legend > table > tr > th {
+    text-align: center;
+    font-size: 14px;
+}
+
+.legend > table > tr > td {
+    text-align: center;
+    font-size: 11px;
+}
 
 .icon-style {
     background-color: rgba(241, 241, 241, 0.534);
@@ -177,8 +207,26 @@ table {
 }
 
 @media (max-width:540px) {
+    .legend > table > tr > th {
+        font-size: 16px;
+    }
+    
+    .legend > table > tr > td {
+        font-size: 14px;
+    }
+
+    .legend{
+        width: 100%;
+    }
+
+    .map-psi-container{
+        flex-direction: column;
+    }
+    
+
     .information {
         flex-direction: column;
     }
     
 }
+
