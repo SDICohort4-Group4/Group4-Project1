@@ -32,7 +32,7 @@ function Home() {
     }
 
     function getfourdayData(data) {
-        // console.log("4d", data) for debugging
+        console.log("4d", data)
         setfourdayData(data);
     }
 

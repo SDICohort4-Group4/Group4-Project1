@@ -4,20 +4,26 @@ import { Marker, Tooltip } from 'react-leaflet'
 const iconWeather= (weather, iconSize) => {
     let weatherIcon;
     switch(weather) {
+        case "Heavy Rain":
         case "Moderate Rain":
-            weatherIcon = 'partial-cloudy.png'
-            break;
         case "Light Rain":
             weatherIcon = 'rain.png'
             break;
+        case "Partly Cloudy":
         case "Cloudy":
             weatherIcon = 'partial-cloudy.png'
             break;
+        case "Heavy Thundery Showers":
         case "Thundery Showers":
-            weatherIcon = 'partial-cloudy.png'
+            weatherIcon = 'storm.png'
+            break;
+        case "Fair":
+        case "Sunny":
+            weatherIcon = 'wi-sunny.png';
             break;
         default:
-            weatherIcon = 'partial-cloudy.png'
+            console.log(weather)
+            weatherIcon = 'sad-sun.png'
     }
 
     return new L.Icon({
@@ -40,7 +46,7 @@ function CreateWeatherMarkers(props) {
                     return(
                     <Marker key={i} position={ele.coordinate} icon={iconWeather(ele.forecast, props.iconSize)}>
                         <Tooltip>
-                        {ele.name}
+                        {ele.name}: {ele.forecast}
                         </Tooltip>
                     </Marker>
                     )
