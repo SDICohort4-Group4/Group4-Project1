@@ -128,6 +128,7 @@ function GetNEAData(props) {
     const response = await API.get(dataType);
     if (response.status===200){
 
+      console.log(response);
       // create an array of object {name: , coordinate} from area_metadata
       let coorArr = response.data.area_metadata.map(ele => {
         let formatObj = {
@@ -136,13 +137,14 @@ function GetNEAData(props) {
         }
         return formatObj;
         })
-      
+      console.log(coorArr)
       // pharse through forcastArr to add forcast into coor Arr
       let returnArr = response.data.items[0].forecasts.map(ele=> {
         let tempArr = coorArr.filter(coorEle => coorEle.name === ele.area);
         let formatObj = {...tempArr[0], forecast: ele.forecast}
         return formatObj;
       })
+      console.log(returnArr)
       //return data in {name: string, coordinate: [Array of lat and long], forecast: string }
       props.get2HrData(returnArr);
     }
