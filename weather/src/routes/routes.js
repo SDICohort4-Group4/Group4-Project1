@@ -52,30 +52,34 @@ export function PSI(props){
             </MapContainer>
             <div className="legend">
                 <table>
-                    <tr>
-                        <th>PSI</th>
-                        <th>Air Quality</th>
-                    </tr>
-                    <tr>
-                        <td>0 - 50</td>
-                        <td>Good</td>
-                    </tr>
-                    <tr>
-                        <td>51 - 100</td>
-                        <td>Moderate</td>
-                    </tr>
-                    <tr>
-                        <td>101 - 200</td>
-                        <td>Unhealthy</td>
-                    </tr>
-                    <tr>
-                        <td>201 - 300</td>
-                        <td>Very Unhealthy</td>
-                    </tr>
-                    <tr>
-                        <td>Above 300</td>
-                        <td>Hazardous</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>PSI</th>
+                            <th>Air Quality</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0 - 50</td>
+                            <td>Good</td>
+                        </tr>
+                        <tr>
+                            <td>51 - 100</td>
+                            <td>Moderate</td>
+                        </tr>
+                        <tr>
+                            <td>101 - 200</td>
+                            <td>Unhealthy</td>
+                        </tr>
+                        <tr>
+                            <td>201 - 300</td>
+                            <td>Very Unhealthy</td>
+                        </tr>
+                        <tr>
+                            <td>Above 300</td>
+                            <td>Hazardous</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             </div>

@@ -60,12 +60,12 @@
     width: 100%;
 }
 
-.legend > table > tr > th {
+.legend > table > thead > tr > th {
     text-align: center;
     font-size: 14px;
 }
 
-.legend > table > tr > td {
+.legend > table > tbody > tr > td {
     text-align: center;
     font-size: 11px;
 }

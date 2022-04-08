@@ -19,7 +19,9 @@ const iconWeather= (weather, iconSize) => {
         case "Thundery Showers":
             weatherIcon = 'storm.png'
             break;
-        case "Fair":
+        case "Fair (Day)":
+        case "Fair (Noon)":
+        case "Fair (Night)":    
         case "Sunny":
             weatherIcon = 'wi-sunny.png';
             break;
