@@ -168,6 +168,7 @@
     font-weight: 700;
     font-size: 16px;
     letter-spacing: 0.8px;
+    
 }
 
 th {
@@ -230,3 +231,27 @@ table {
     
 }
 
+.UVlegend1 {
+    font-weight: bold;
+    color:#579c00;
+}
+
+.UVlegend2 {
+    font-weight: bold;
+    color:#f8ce09;
+}
+
+.UVlegend3 {
+    font-weight: bold;
+    color:#ff8400;
+}
+
+.UVlegend4 {
+    font-weight: bold;
+    color:#d80000;
+}
+
+.UVlegend5 {
+    font-weight: bold;
+    color:#7031a1;
+}

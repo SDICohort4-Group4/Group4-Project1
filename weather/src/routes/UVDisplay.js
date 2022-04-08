@@ -19,23 +19,23 @@ export default function UVDisplay(props){
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr style={{color: "#579C00", fontWeight: "bold"}}>
+                                <tr className="UVlegend1" >
                                     <td>0 - 2</td>
                                     <td>Low</td>
                                 </tr>
-                                <tr style={{color: "#F8CE09", fontWeight: "bold"}}>
+                                <tr className="UVlegend2" >
                                     <td>3 - 5</td>
                                     <td>Moderate</td>
                                 </tr>
-                                <tr style={{color: "#FF8400", fontWeight: "bold"}}>
+                                <tr className="UVlegend3" >
                                     <td>6 - 7</td>
                                     <td>High</td>
                                 </tr>
-                                <tr style={{color: "#D80000", fontWeight: "bold"}}>
+                                <tr className="UVlegend4" >
                                     <td>8 - 10</td>
                                     <td>Very High</td>
                                 </tr>
-                                <tr style={{color: "#7031A1", fontWeight: "bold"}}>
+                                <tr className="UVlegend5" >
                                     <td>Above 11</td>
                                     <td>Extreme</td>
                                 </tr>
@@ -52,15 +52,15 @@ export default function UVDisplay(props){
 function UVReading(uvData){
         
     if(uvData>=0 && uvData<3) 
-         return <div style={{color:"#579C00"}}>{uvData}</div>
+         return <div className="UVlegend1">{uvData}</div>
     if(uvData>=3 && uvData<6)
-        return <div style={{color:"#F8CE09"}}>{uvData}</div>
+        return <div className="UVlegend2">{uvData}</div>
     if(uvData>=6 && uvData<8)
-        return <div style={{color:"#FF8400"}}>{uvData}</div>
+        return <div className="UVlegend3">{uvData}</div>
     if(uvData>=8 && uvData<11)
-        return <div style={{color:"#D80000"}}>{uvData}</div>
+        return <div className="UVlegend4">{uvData}</div>
     if(uvData>10)
-        return <div style={{color:"#7031A1"}}>{uvData}</div>
+        return <div className="UVlegend5">{uvData}</div>
     
     return uvData;    
 }
