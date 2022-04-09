@@ -7,6 +7,9 @@ const iconWeather= (weather, iconSize) => {
         case "Heavy Rain":
         case "Moderate Rain":
         case "Light Rain":
+        case "Light Showers":
+        case "Moderate Showers":
+        case "Heavy Showers":
         case "Showers":
             weatherIcon = 'rain.png'
             break;
