@@ -127,7 +127,6 @@ function GetNEAData(props) {
   async function find2Hr(dataType) {
     const response = await API.get(dataType);
     if (response.status===200){
-
       // create an array of object {name: , coordinate} from area_metadata
       let coorArr = response.data.area_metadata.map(ele => {
         let formatObj = {
