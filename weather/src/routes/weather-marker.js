@@ -7,13 +7,16 @@ const iconWeather= (weather, iconSize) => {
         case "Heavy Rain":
         case "Moderate Rain":
         case "Light Rain":
+        case "Showers":
             weatherIcon = 'rain.png'
             break;
-        case "Partly Cloudy (Day)":
-        case "Partly Cloudy (Noon)":
         case "Partly Cloudy (Night)":
+            weatherIcon = 'partial-cloudy-night.png'
+            break;           
+        case "Partly Cloudy (Noon)": 
+        case "Partly Cloudy (Day)":
         case "Cloudy":
-            weatherIcon = 'partial-cloudy.png'
+            weatherIcon = 'partial-cloudy-day.png'
             break;
         case "Heavy Thundery Showers":
         case "Thundery Showers":
